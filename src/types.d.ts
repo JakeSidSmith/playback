@@ -2,7 +2,15 @@
 type AnyObject = Record<string, any>;
 
 type JSXChildren =
-  | readonly (JSXElement | JSXChildren | string | number | null | undefined)[];
+  | readonly (
+      | JSXElement
+      | JSXChildren
+      | string
+      | number
+      | null
+      | undefined
+      | boolean
+    )[];
 
 type JSXStyle = Partial<Omit<CSSStyleDeclaration, 'length' | 'parentRule'>>;
 
@@ -32,10 +40,24 @@ interface CommonProps {
   onClick?: (event: MouseEvent) => void;
 }
 
+interface ChangeEvent<T extends HTMLElement> {
+  currentTarget: T;
+}
+
+interface InputProps extends CommonProps {
+  type?: 'range';
+  step?: number;
+  min?: number;
+  max?: number;
+  value?: number;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+}
+
 declare namespace JSX {
   interface IntrinsicElements {
     div: CommonProps;
     button: CommonProps;
     p: CommonProps;
+    input: InputProps;
   }
 }

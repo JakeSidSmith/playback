@@ -43,7 +43,7 @@ const renderElement = (target: HTMLElement, element: JSXElement) => {
       return;
     }
 
-    node.setAttribute(key, value);
+    node.setAttribute(key, value.toString());
   });
 
   // eslint-disable-next-line @typescript-eslint/no-use-before-define
@@ -65,7 +65,7 @@ const renderChildren = (target: HTMLElement, children: JSXChildren) => {
       return;
     }
 
-    if (!child) {
+    if (!child || typeof child === 'boolean') {
       return;
     }
 
