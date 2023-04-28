@@ -7,6 +7,7 @@ const config: Config = {
   tsconfigPath: 'tsconfig.json',
   outputIndexHTMLFor: ['build', 'watch'],
   clearOutDirBefore: ['build', 'watch'],
+  https: true,
 };
 
 export default config;
