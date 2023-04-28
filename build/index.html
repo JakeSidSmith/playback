@@ -1,0 +1,136 @@
+<!doctype html><html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/><title>Playback</title><meta name="og:title" content="Playback"/><meta name="og:description" content="Playback microphone audio through speakers in realtime with adjustable gain"/><style>* {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        width: 100%;
+        height: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 18px;
+        color: #333;
+        padding: 0;
+        margin: 0;
+      }
+
+      main {
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+      }
+
+      p,
+      button,
+      input {
+        margin: 10px 0;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      button {
+        display: block;
+        padding: 10px;
+        border: 1px solid #333;
+        border-radius: 5px;
+        background-color: #fff;
+        color: #333;
+        font-size: 18px;
+        cursor: pointer;
+      }
+
+      button,
+      input {
+        width: 200px;
+      }
+
+      .dot-1::before,
+      .dot-2::before,
+      .dot-3::before {
+        content: '.';
+      }
+
+      .dot-1 {
+        animation: dot1 2s linear infinite;
+      }
+
+      .dot-2 {
+        animation: dot2 2s linear infinite;
+      }
+
+      .dot-3 {
+        animation: dot3 2s linear infinite;
+      }
+
+      @keyframes dot1 {
+        0% {
+          color: transparent;
+        }
+
+        30% {
+          color: inherit;
+        }
+
+        50% {
+          color: transparent;
+        }
+
+        100% {
+          color: transparent;
+        }
+      }
+
+      @keyframes dot2 {
+        0% {
+          color: transparent;
+        }
+
+        10% {
+          color: transparent;
+        }
+
+        40% {
+          color: inherit;
+        }
+
+        60% {
+          color: transparent;
+        }
+
+        100% {
+          color: transparent;
+        }
+      }
+
+      @keyframes dot3 {
+        0% {
+          color: transparent;
+        }
+
+        20% {
+          color: transparent;
+        }
+
+        50% {
+          color: inherit;
+        }
+
+        70% {
+          color: transparent;
+        }
+
+        100% {
+          color: transparent;
+        }
+      }</style></head><body><main><p style="display: none" id="loading"><span>Loading<span class="dot-1"></span><span class="dot-2"></span><span class="dot-3"></span></span></p><noscript><p>You must have JavaScript enabled to use this page.</p></noscript><script>var loading = document.getElementById('loading');
+        loading.style.display = 'block';</script></main><script src="/bundle.7516fef6e844d921536b.js"></script></body></html>
