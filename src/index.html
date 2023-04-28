@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>Playback</title>
+    <!-- <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon"> -->
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        width: 100%;
+        height: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 18px;
+        color: #333;
+        padding: 0;
+        margin: 0;
+      }
+
+      .loading {
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .dot-1::before,
+      .dot-2::before,
+      .dot-3::before {
+        content: '.';
+      }
+
+      .dot-1 {
+        animation: dot1 2s linear infinite;
+      }
+
+      .dot-2 {
+        animation: dot2 2s linear infinite;
+      }
+
+      .dot-3 {
+        animation: dot3 2s linear infinite;
+      }
+
+      @keyframes dot1 {
+        0% {
+          color: transparent;
+        }
+
+        30% {
+          color: inherit;
+        }
+
+        50% {
+          color: transparent;
+        }
+
+        100% {
+          color: transparent;
+        }
+      }
+
+      @keyframes dot2 {
+        0% {
+          color: transparent;
+        }
+
+        10% {
+          color: transparent;
+        }
+
+        40% {
+          color: inherit;
+        }
+
+        60% {
+          color: transparent;
+        }
+
+        100% {
+          color: transparent;
+        }
+      }
+
+      @keyframes dot3 {
+        0% {
+          color: transparent;
+        }
+
+        20% {
+          color: transparent;
+        }
+
+        50% {
+          color: inherit;
+        }
+
+        70% {
+          color: transparent;
+        }
+
+        100% {
+          color: transparent;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You must have JavaScript enabled to use this page.</noscript>
+
+    <main class="loading">
+      <p>
+        <span>
+          Loading<span class="dot-1"></span><span class="dot-2"></span
+          ><span class="dot-3"></span>
+        </span>
+      </p>
+    </main>
+  </body>
+</html>
