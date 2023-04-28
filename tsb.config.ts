@@ -1,7 +1,7 @@
 import { Config } from '@jakesidsmith/tsb';
 
 const config: Config = {
-  main: 'src/index.ts',
+  main: 'src/index.tsx',
   indexHTMLPath: 'src/index.html',
   outDir: 'build',
   tsconfigPath: 'tsconfig.json',
