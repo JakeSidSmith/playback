@@ -121,15 +121,20 @@
     </style>
   </head>
   <body>
-    <noscript>You must have JavaScript enabled to use this page.</noscript>
-
     <main>
-      <p>
+      <p style="display: none" id="loading">
         <span>
           Loading<span class="dot-1"></span><span class="dot-2"></span
           ><span class="dot-3"></span>
         </span>
       </p>
+      <noscript
+        ><p>You must have JavaScript enabled to use this page.</p></noscript
+      >
+      <script type="text/javascript">
+        var loading = document.getElementById('loading');
+        loading.style.display = 'block';
+      </script>
     </main>
   </body>
 </html>
