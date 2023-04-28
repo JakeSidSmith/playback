@@ -5,7 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "start": "tsb serve",
-    "build": "tsb build",
+    "build": "tsb build && cp CNAME docs/CNAME",
     "lint": "eslint '**/*.{ts,tsx,js,jsx}'",
     "format": "prettier --write '**/*'",
     "format-check": "prettier --check '**/*'",
