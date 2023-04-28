@@ -3,6 +3,7 @@
 /.vscode/*
 /coverage/*
 /scripts/*
+/docs/*
 **/*.txt
 **/*.snap
 
