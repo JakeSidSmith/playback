@@ -58,7 +58,7 @@ const accessMic = () => {
   mediaDevices
     .getUserMedia({
       audio: {
-        noiseSuppression: false,
+        noiseSuppression: true,
         echoCancellation: false,
       },
       video: false,
