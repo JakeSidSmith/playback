@@ -74,9 +74,11 @@ const renderChildren = (target: HTMLElement, children: JSXChildren) => {
 };
 
 export const render = (target: HTMLElement, element: JSXElement) => {
-  target.innerHTML = '';
+  window.requestAnimationFrame(() => {
+    target.innerHTML = '';
 
-  renderElement(target, element);
+    renderElement(target, element);
+  });
 
   return () => {
     target.innerHTML = '';
