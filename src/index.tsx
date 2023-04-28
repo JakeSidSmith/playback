@@ -30,7 +30,7 @@ const getRequirements = (): Requirements | RequirementError => {
   const audioContext = new AudioContext();
 
   const gainNode = audioContext.createGain();
-  gainNode.gain.value = 1;
+  gainNode.gain.setValueAtTime(1, audioContext.currentTime);
 
   gainNode.connect(audioContext.destination);
 
@@ -43,26 +43,40 @@ const getRequirements = (): Requirements | RequirementError => {
 
 const requirements = getRequirements();
 
-const accessMic = async ({
-  mediaDevices,
-  audioContext,
-  gainNode,
-}: Requirements) => {
-  const stream = await mediaDevices.getUserMedia({
-    audio: {
-      noiseSuppression: false,
-    },
-  });
-
-  const gainSource = audioContext.createMediaStreamSource(stream);
-
-  gainSource.connect(gainNode);
-};
-
 let error: Error | null = null;
 
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 const rerender = () => render(main, <App />);
+
+const accessMic = () => {
+  if ('error' in requirements) {
+    return;
+  }
+
+  const { mediaDevices, audioContext, gainNode } = requirements;
+
+  mediaDevices
+    .getUserMedia({
+      audio: {
+        noiseSuppression: false,
+      },
+      video: false,
+    })
+    .then((stream) => {
+      error = null;
+      rerender();
+
+      const gainSource = audioContext.createMediaStreamSource(stream);
+
+      gainSource.connect(gainNode);
+
+      audioContext.resume();
+    })
+    .catch((err) => {
+      error = err;
+      rerender();
+    });
+};
 
 const App = () => {
   if ('error' in requirements) {
@@ -72,21 +86,7 @@ const App = () => {
   return (
     <div className="content">
       <p>Press the button, allow access, and adjust the gain to your needs.</p>
-      <button
-        onClick={() => {
-          accessMic(requirements)
-            .then(() => {
-              error = null;
-              rerender();
-            })
-            .catch((err) => {
-              error = err;
-              rerender();
-            });
-        }}
-      >
-        Allow microphone access
-      </button>
+      <button onClick={accessMic}>Allow microphone access</button>
       <input
         type="range"
         min={0}
@@ -95,7 +95,9 @@ const App = () => {
         value={requirements.gainNode.gain.value}
         onChange={(event) => {
           const { value } = event.currentTarget;
+          requirements.audioContext.resume();
           requirements.gainNode.gain.value = parseFloat(value);
+          rerender();
         }}
       />
       {error && <p>{error.message}</p>}
