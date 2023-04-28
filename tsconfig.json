@@ -13,6 +13,7 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "jsx": "react",
+    "jsxFactory": "createElement",
     "moduleResolution": "node",
     "target": "ESNext",
     "module": "ESNext",
